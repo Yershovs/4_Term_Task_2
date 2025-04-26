@@ -1,0 +1,51 @@
+\doxysection{server.\+cpp File Reference}
+\hypertarget{server_8cpp}{}\label{server_8cpp}\index{server.cpp@{server.cpp}}
+
+
+Сервер для обработки запросов алгоритма Беллмана-\/Форда  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$winsock2.\+h$>$}\newline
+{\ttfamily \#include $<$ws2tcpip.\+h$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}bellman\+\_\+ford.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{server_8cpp_a614217d263be1fb1a5f76e2ff7be19a2}\label{server_8cpp_a614217d263be1fb1a5f76e2ff7be19a2} 
+\#define {\bfseries PORT}~8080
+\begin{DoxyCompactList}\small\item\em Порт сервера \end{DoxyCompactList}\item 
+\Hypertarget{server_8cpp_a6b20d41d6252e9871430c242cb1a56e7}\label{server_8cpp_a6b20d41d6252e9871430c242cb1a56e7} 
+\#define {\bfseries BUFFER\+\_\+\+SIZE}~1024
+\begin{DoxyCompactList}\small\item\em Размер буфера \end{DoxyCompactList}\item 
+\Hypertarget{server_8cpp_ab94814559b67e4a2a564087f821145ea}\label{server_8cpp_ab94814559b67e4a2a564087f821145ea} 
+\#define {\bfseries MAX\+\_\+\+QUEUE}~1000
+\begin{DoxyCompactList}\small\item\em Максимальная очередь подключений \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{server_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Основная функция сервера \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Сервер для обработки запросов алгоритма Беллмана-\/Форда 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{server_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{server.cpp@{server.cpp}!main@{main}}
+\index{main@{main}!server.cpp@{server.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{server_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Основная функция сервера 
+
+\begin{DoxyReturn}{Returns}
+Код завершения программы 
+\end{DoxyReturn}

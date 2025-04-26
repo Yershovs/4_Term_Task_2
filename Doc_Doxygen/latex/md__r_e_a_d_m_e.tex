@@ -1,0 +1,42 @@
+\chapter{4\+\_\+\+Term\+\_\+\+Task\+\_\+2}
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{4\_Term\_Task\_2@{4\_Term\_Task\_2}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md0}%
+\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{\texorpdfstring{Bellman-\/\+Ford Algorithm Implementation}{Bellman-\/\+Ford Algorithm Implementation}}\label{md__r_e_a_d_m_e_autotoc_md1}
+Client-\/server system for finding shortest paths in graphs with negative weights\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysubsection{\texorpdfstring{Features}{Features}}\label{md__r_e_a_d_m_e_autotoc_md2}
+
+\begin{DoxyItemize}
+\item Bellman-\/\+Ford algorithm implementation
+\item Client-\/server architecture
+\item Mass testing system
+\item Graph visualization
+\item Support for negative weight edges
+\item Negative cycle detection
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysubsection{\texorpdfstring{Components}{Components}}\label{md__r_e_a_d_m_e_autotoc_md3}
+
+\begin{DoxyItemize}
+\item {\ttfamily \doxylink{server_8cpp}{server.\+cpp}} -\/ main server application
+\item {\ttfamily \doxylink{client_8cpp}{client.\+cpp}} -\/ interactive client
+\item {\ttfamily \doxylink{mass__test_8cpp}{mass\+\_\+test.\+cpp}} -\/ automated testing system
+\item {\ttfamily visualize.\+py} -\/ graph visualization tool
+\item {\ttfamily \doxylink{bellman__ford_8h}{bellman\+\_\+ford.\+h}} -\/ algorithm implementation
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysubsection{\texorpdfstring{Build and Run}{Build and Run}}\label{md__r_e_a_d_m_e_autotoc_md4}
+
+\begin{DoxyEnumerate}
+\item Compile server and client\+: g++ \doxylink{server_8cpp}{server.\+cpp} -\/o server -\/lws2\+\_\+32 g++ \doxylink{client_8cpp}{client.\+cpp} -\/o client -\/lws2\+\_\+32 g++ \doxylink{mass__test_8cpp}{mass\+\_\+test.\+cpp} -\/o tester -\/lws2\+\_\+32
+\item Run server\+: ./server
+\item Run client in another terminal\+: ./client
+\item For mass testing\+: ./tester
+\item For visualization (requires Python 3 and matplotlib)\+: python visualize.\+py
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysubsection{\texorpdfstring{Input Format}{Input Format}}\label{md__r_e_a_d_m_e_autotoc_md5}
+Enter graph data in format\+: V start src1,dest1,weight1 src2,dest2,weight2 ...\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__r_e_a_d_m_e_autotoc_md6}
+Input\+: 5 0 0,1,-\/1 0,2,4 1,2,3 1,3,2 1,4,2 3,2,5 3,1,1 4,3,-\/3
+
+Output\+: 0\+:0 1\+:-\/1 2\+:2 3\+:-\/2 4\+:1\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysubsection{\texorpdfstring{Requirements}{Requirements}}\label{md__r_e_a_d_m_e_autotoc_md7}
+
+\begin{DoxyItemize}
+\item Windows (for Winsock)
+\item g++ compiler
+\item Python 3 (for visualization)
+\item matplotlib (for visualization) 
+\end{DoxyItemize}

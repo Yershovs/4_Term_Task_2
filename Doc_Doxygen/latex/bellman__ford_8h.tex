@@ -1,0 +1,93 @@
+\doxysection{bellman\+\_\+ford.\+h File Reference}
+\hypertarget{bellman__ford_8h}{}\label{bellman__ford_8h}\index{bellman\_ford.h@{bellman\_ford.h}}
+
+
+Реализация алгоритма Беллмана-\/Форда для поиска кратчайших путей  
+
+
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$climits$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_edge}{Edge}}
+\begin{DoxyCompactList}\small\item\em Структура, представляющая ребро графа \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ \mbox{\hyperlink{bellman__ford_8h_a3dc69fad11ccc15de02a70a132c5c220}{parse\+Edges}} (const std\+::string \&input)
+\begin{DoxyCompactList}\small\item\em Разбирает строку с описанием рёбер графа \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{bellman__ford_8h_aaf897c5a93539dd2c448806bd68ff317}{results\+To\+String}} (const std\+::vector$<$ int $>$ \&dist, bool has\+Negative\+Cycle)
+\begin{DoxyCompactList}\small\item\em Преобразует результаты работы алгоритма в строку \end{DoxyCompactList}\item 
+std\+::pair$<$ std\+::vector$<$ int $>$, bool $>$ \mbox{\hyperlink{bellman__ford_8h_ac0a7ad690d53b2013153b5b28a66330e}{bellman\+Ford}} (const std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ \&edges, int V, int start)
+\begin{DoxyCompactList}\small\item\em Реализация алгоритма Беллмана-\/Форда \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Реализация алгоритма Беллмана-\/Форда для поиска кратчайших путей 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{bellman__ford_8h_ac0a7ad690d53b2013153b5b28a66330e}\index{bellman\_ford.h@{bellman\_ford.h}!bellmanFord@{bellmanFord}}
+\index{bellmanFord@{bellmanFord}!bellman\_ford.h@{bellman\_ford.h}}
+\doxysubsubsection{\texorpdfstring{bellmanFord()}{bellmanFord()}}
+{\footnotesize\ttfamily \label{bellman__ford_8h_ac0a7ad690d53b2013153b5b28a66330e} 
+std\+::pair$<$ std\+::vector$<$ int $>$, bool $>$ bellman\+Ford (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ \&}]{edges}{, }\item[{int}]{V}{, }\item[{int}]{start}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Реализация алгоритма Беллмана-\/Форда 
+
+
+\begin{DoxyParams}{Parameters}
+{\em edges} & Вектор рёбер графа \\
+\hline
+{\em V} & Количество вершин в графе \\
+\hline
+{\em start} & Начальная вершина \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Пара\+: вектор расстояний и флаг наличия отрицательного цикла 
+\end{DoxyReturn}
+\Hypertarget{bellman__ford_8h_a3dc69fad11ccc15de02a70a132c5c220}\index{bellman\_ford.h@{bellman\_ford.h}!parseEdges@{parseEdges}}
+\index{parseEdges@{parseEdges}!bellman\_ford.h@{bellman\_ford.h}}
+\doxysubsubsection{\texorpdfstring{parseEdges()}{parseEdges()}}
+{\footnotesize\ttfamily \label{bellman__ford_8h_a3dc69fad11ccc15de02a70a132c5c220} 
+std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ parse\+Edges (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Разбирает строку с описанием рёбер графа 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Строка в формате "{}src1,dest1,weight1 src2,dest2,weight2 ..."{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Вектор рёбер графа 
+\end{DoxyReturn}
+\Hypertarget{bellman__ford_8h_aaf897c5a93539dd2c448806bd68ff317}\index{bellman\_ford.h@{bellman\_ford.h}!resultsToString@{resultsToString}}
+\index{resultsToString@{resultsToString}!bellman\_ford.h@{bellman\_ford.h}}
+\doxysubsubsection{\texorpdfstring{resultsToString()}{resultsToString()}}
+{\footnotesize\ttfamily \label{bellman__ford_8h_aaf897c5a93539dd2c448806bd68ff317} 
+std\+::string results\+To\+String (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ int $>$ \&}]{dist}{, }\item[{bool}]{has\+Negative\+Cycle}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Преобразует результаты работы алгоритма в строку 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dist} & Вектор расстояний до вершин \\
+\hline
+{\em has\+Negative\+Cycle} & Флаг наличия отрицательного цикла \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Строковое представление результатов 
+\end{DoxyReturn}

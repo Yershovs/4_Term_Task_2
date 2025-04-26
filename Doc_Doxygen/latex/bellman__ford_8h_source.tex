@@ -1,0 +1,71 @@
+\doxysection{bellman\+\_\+ford.\+h}
+\hypertarget{bellman__ford_8h_source}{}\label{bellman__ford_8h_source}\mbox{\hyperlink{bellman__ford_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\ \#pragma\ once}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\ \#include\ <vector>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\ \#include\ <climits>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\ \#include\ <string>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\ \#include\ <sstream>}}
+\DoxyCodeLine{00012\ \ }
+\DoxyCodeLine{00016\ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_edge}{Edge}}\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_edge_adcf410ae923d69e22ede2cd59ee80108}{source}};\ \ \ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_edge_ad7df434ff7710e69f28bb31e91a35f82}{dest}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_edge_a4d58e1f4de38fa55549497175981ebab}{weight}};\ \ \ \ \ }
+\DoxyCodeLine{00020\ \ \};}
+\DoxyCodeLine{00021\ \ }
+\DoxyCodeLine{00027\ \ \textcolor{keyword}{inline}\ std::vector<Edge>\ \mbox{\hyperlink{bellman__ford_8h_a3dc69fad11ccc15de02a70a132c5c220}{parseEdges}}(\textcolor{keyword}{const}\ std::string\&\ input)\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ std::vector<Edge>\ edges;}
+\DoxyCodeLine{00029\ \ \ \ \ \ std::istringstream\ iss(input);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \textcolor{keywordtype}{int}\ src,\ dest,\ weight;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \textcolor{keywordtype}{char}\ sep1,\ sep2;}
+\DoxyCodeLine{00032\ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \textcolor{keywordflow}{while}\ (iss\ >>\ src\ >>\ sep1\ >>\ dest\ >>\ sep2\ >>\ weight)\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ edges.push\_back(\{src,\ dest,\ weight\});}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (iss.peek()\ ==\ \textcolor{charliteral}{'\ '})\ iss.ignore();}
+\DoxyCodeLine{00036\ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \textcolor{keywordflow}{return}\ edges;}
+\DoxyCodeLine{00038\ \ \}}
+\DoxyCodeLine{00039\ \ }
+\DoxyCodeLine{00046\ \ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{bellman__ford_8h_aaf897c5a93539dd2c448806bd68ff317}{resultsToString}}(\textcolor{keyword}{const}\ std::vector<int>\&\ dist,\ \textcolor{keywordtype}{bool}\ hasNegativeCycle)\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hasNegativeCycle)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Graph\ contains\ negative\ cycle!"{}};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \ std::ostringstream\ oss;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ dist.size();\ ++i)\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ oss\ <<\ i\ <<\ \textcolor{stringliteral}{"{}:"{}}\ <<\ dist[i]\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \textcolor{keywordflow}{return}\ oss.str();}
+\DoxyCodeLine{00056\ \ \}}
+\DoxyCodeLine{00057\ \ }
+\DoxyCodeLine{00065\ \ \textcolor{keyword}{inline}\ std::pair<std::vector<int>,\ \textcolor{keywordtype}{bool}>\ \mbox{\hyperlink{bellman__ford_8h_ac0a7ad690d53b2013153b5b28a66330e}{bellmanFord}}(\textcolor{keyword}{const}\ std::vector<Edge>\&\ edges,\ \textcolor{keywordtype}{int}\ V,\ \textcolor{keywordtype}{int}\ start)\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ std::vector<int>\ dist(V,\ INT\_MAX);}
+\DoxyCodeLine{00067\ \ \ \ \ \ dist[start]\ =\ 0;}
+\DoxyCodeLine{00068\ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \textcolor{comment}{//\ Релаксация\ всех\ рёбер\ V-\/1\ раз}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <=\ V\ -\/\ 1;\ ++i)\ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ edge\ :\ edges)\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dist[edge.source]\ !=\ INT\_MAX\ \&\&\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dist[edge.source]\ +\ edge.weight\ <\ dist[edge.dest])\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dist[edge.dest]\ =\ dist[edge.source]\ +\ edge.weight;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \textcolor{comment}{//\ Проверка\ на\ отрицательные\ циклы}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ hasNegativeCycle\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00081\ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ edge\ :\ edges)\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dist[edge.source]\ !=\ INT\_MAX\ \&\&\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ dist[edge.source]\ +\ edge.weight\ <\ dist[edge.dest])\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ hasNegativeCycle\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{dist,\ hasNegativeCycle\};}
+\DoxyCodeLine{00090\ \ \}}
+
+\end{DoxyCode}

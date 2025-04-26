@@ -1,0 +1,137 @@
+\doxysection{mass\+\_\+test.\+cpp File Reference}
+\hypertarget{mass__test_8cpp}{}\label{mass__test_8cpp}\index{mass\_test.cpp@{mass\_test.cpp}}
+
+
+Массовое тестирование сервера Беллмана-\/Форда  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$winsock2.\+h$>$}\newline
+{\ttfamily \#include $<$ws2tcpip.\+h$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$random$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include "{}bellman\+\_\+ford.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{mass__test_8cpp_a614217d263be1fb1a5f76e2ff7be19a2}\label{mass__test_8cpp_a614217d263be1fb1a5f76e2ff7be19a2} 
+\#define {\bfseries PORT}~8080
+\item 
+\Hypertarget{mass__test_8cpp_a6b20d41d6252e9871430c242cb1a56e7}\label{mass__test_8cpp_a6b20d41d6252e9871430c242cb1a56e7} 
+\#define {\bfseries BUFFER\+\_\+\+SIZE}~1024
+\item 
+\Hypertarget{mass__test_8cpp_a255a33e35115a516730b5425b551d850}\label{mass__test_8cpp_a255a33e35115a516730b5425b551d850} 
+\#define {\bfseries NUM\+\_\+\+CLIENTS}~100
+\item 
+\Hypertarget{mass__test_8cpp_a23f67ede912654c6b2a4a613e84b80be}\label{mass__test_8cpp_a23f67ede912654c6b2a4a613e84b80be} 
+\#define {\bfseries TEST\+\_\+\+LOG\+\_\+\+FILE}~"{}bf\+\_\+tests.\+log"{}
+\item 
+\Hypertarget{mass__test_8cpp_ad122b50a5bed0af22a4f3b4f8219e7fb}\label{mass__test_8cpp_ad122b50a5bed0af22a4f3b4f8219e7fb} 
+\#define {\bfseries MIN\+\_\+\+WEIGHT}~-\/100
+\item 
+\Hypertarget{mass__test_8cpp_a943995a7bf30da3587664920856533ab}\label{mass__test_8cpp_a943995a7bf30da3587664920856533ab} 
+\#define {\bfseries MAX\+\_\+\+WEIGHT}~100
+\item 
+\Hypertarget{mass__test_8cpp_a5ad237cd11138bed076287ce135e1964}\label{mass__test_8cpp_a5ad237cd11138bed076287ce135e1964} 
+\#define {\bfseries MIN\+\_\+\+VERTICES}~5
+\item 
+\Hypertarget{mass__test_8cpp_a0fdb7b933ef091574ff57d1f36dd4167}\label{mass__test_8cpp_a0fdb7b933ef091574ff57d1f36dd4167} 
+\#define {\bfseries MAX\+\_\+\+VERTICES}~20
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::pair$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{mass__test_8cpp_afc1024ad208e0a3e7ee5da7fde25ce2c}{generate\+Graph}} (std\+::mt19937 \&gen, std\+::uniform\+\_\+int\+\_\+distribution$<$$>$ \&weight\+\_\+dist, std\+::uniform\+\_\+int\+\_\+distribution$<$$>$ \&vertex\+\_\+dist)
+\begin{DoxyCompactList}\small\item\em Генерирует случайный граф \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mass__test_8cpp_a25b8e19a672a198da90455432a24d029}{save\+Test\+To\+File}} (const std\+::string \&test\+Case, const std\+::string \&result, const std\+::string \&expected)
+\begin{DoxyCompactList}\small\item\em Сохраняет результаты теста в файл \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{mass__test_8cpp_a44ff138b90313997c3ab3124d1353014}{test\+Client}} (const std\+::string \&test\+Case, const std\+::string \&expected, int client\+Id)
+\begin{DoxyCompactList}\small\item\em Выполняет тестовый запрос к серверу \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mass__test_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Основная функция тестирования \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Массовое тестирование сервера Беллмана-\/Форда 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{mass__test_8cpp_afc1024ad208e0a3e7ee5da7fde25ce2c}\index{mass\_test.cpp@{mass\_test.cpp}!generateGraph@{generateGraph}}
+\index{generateGraph@{generateGraph}!mass\_test.cpp@{mass\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{generateGraph()}{generateGraph()}}
+{\footnotesize\ttfamily \label{mass__test_8cpp_afc1024ad208e0a3e7ee5da7fde25ce2c} 
+std\+::pair$<$ std\+::string, std\+::string $>$ generate\+Graph (\begin{DoxyParamCaption}\item[{std\+::mt19937 \&}]{gen}{, }\item[{std\+::uniform\+\_\+int\+\_\+distribution$<$$>$ \&}]{weight\+\_\+dist}{, }\item[{std\+::uniform\+\_\+int\+\_\+distribution$<$$>$ \&}]{vertex\+\_\+dist}{}\end{DoxyParamCaption})}
+
+
+
+Генерирует случайный граф 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gen} & Генератор случайных чисел \\
+\hline
+{\em weight\+\_\+dist} & Распределение весов \\
+\hline
+{\em vertex\+\_\+dist} & Распределение вершин \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Пара\+: строка с описанием графа и ожидаемый результат 
+\end{DoxyReturn}
+\Hypertarget{mass__test_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{mass\_test.cpp@{mass\_test.cpp}!main@{main}}
+\index{main@{main}!mass\_test.cpp@{mass\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{mass__test_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Основная функция тестирования 
+
+\begin{DoxyReturn}{Returns}
+Код завершения программы 
+\end{DoxyReturn}
+\Hypertarget{mass__test_8cpp_a25b8e19a672a198da90455432a24d029}\index{mass\_test.cpp@{mass\_test.cpp}!saveTestToFile@{saveTestToFile}}
+\index{saveTestToFile@{saveTestToFile}!mass\_test.cpp@{mass\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{saveTestToFile()}{saveTestToFile()}}
+{\footnotesize\ttfamily \label{mass__test_8cpp_a25b8e19a672a198da90455432a24d029} 
+void save\+Test\+To\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{test\+Case}{, }\item[{const std\+::string \&}]{result}{, }\item[{const std\+::string \&}]{expected}{}\end{DoxyParamCaption})}
+
+
+
+Сохраняет результаты теста в файл 
+
+
+\begin{DoxyParams}{Parameters}
+{\em test\+Case} & Описание теста \\
+\hline
+{\em result} & Результат выполнения \\
+\hline
+{\em expected} & Ожидаемый результат \\
+\hline
+\end{DoxyParams}
+\Hypertarget{mass__test_8cpp_a44ff138b90313997c3ab3124d1353014}\index{mass\_test.cpp@{mass\_test.cpp}!testClient@{testClient}}
+\index{testClient@{testClient}!mass\_test.cpp@{mass\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{testClient()}{testClient()}}
+{\footnotesize\ttfamily \label{mass__test_8cpp_a44ff138b90313997c3ab3124d1353014} 
+bool test\+Client (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{test\+Case}{, }\item[{const std\+::string \&}]{expected}{, }\item[{int}]{client\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Выполняет тестовый запрос к серверу 
+
+
+\begin{DoxyParams}{Parameters}
+{\em test\+Case} & Описание теста \\
+\hline
+{\em expected} & Ожидаемый результат \\
+\hline
+{\em client\+Id} & Идентификатор клиента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Результат сравнения (true -\/ совпадает) 
+\end{DoxyReturn}
